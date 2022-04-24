@@ -39,6 +39,7 @@ myconstr = function(x, y, alpha){
 print <- function(x){
   UseMethod("print")
 }
+
 print.Rttest = function(x)
 {
 
@@ -58,4 +59,5 @@ print.Rttest = function(x)
   kableExtra::kable_styling(kableExtra::kable(df, align = "c"))
 
 }
+
 
