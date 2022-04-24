@@ -31,10 +31,14 @@ myconstr = function(x, y, alpha){
 #' @param x Rttest object
 #' @importFrom kableExtra kable_styling kable
 #' @return a table with two samples, confidence interval and significance level
+#' @rdname print.Rttest
 #' @export
 #'
 #' @examples
 #' \dontrun{print(obj)}
+print <- function(x){
+  UseMethod("print")
+}
 print.Rttest = function(x)
 {
 
