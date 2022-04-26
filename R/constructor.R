@@ -1,4 +1,3 @@
-
 #' @title 2 sample test
 #' This is my constructor function. This function will create a list. The constructor runs the hypotheses on two samples, and creates and object with the confidence interval and p statistics
 #'
@@ -23,41 +22,6 @@ myconstr = function(x, y, alpha){
   obj = list(data = data.frame(x, y), conf.int = conf.int, p.val = p.val)
   class(obj) = "Rttest"
   obj
-}
-
-
-#' Prints out two samples, confidence interval and significance level to a table.
-#'
-#' @param x Rttest object
-#' @importFrom kableExtra kable_styling kable
-#' @return a table with two samples, confidence interval and significance level
-#' @rdname print.Rttest
-#' @export
-#'
-#' @examples
-#' \dontrun{print(obj)}
-print <- function(x){
-  UseMethod("print")
-}
-
-print.Rttest = function(x)
-{
-
-  options(knitr.kable.NA = '')
-  data = x[["data"]]
-  l = length(data$x)
-
-  p.val = x[["p.val"]]
-  p.val = c(p.val, rep(NA, l-1))
-  conf.int = x[["conf.int"]]
-  conf.int = c(conf.int, rep(NA, l - 2))
-
-
-  df = data.frame(data, conf.int,p.val)
-
-
-  kableExtra::kable_styling(kableExtra::kable(df, align = "c"))
-
 }
 
 
