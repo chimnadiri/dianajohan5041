@@ -18,10 +18,7 @@ myconstr = function(x, y, alpha){
   y = c(y, rep(NA, l - length(y)))
   p.val = test$p.value
   conf.int = test$conf.int
-  #obj = list(data = list(x = x, y = y), conf.int = test$conf.int, p.val = test$p.value)
   obj = list(data = data.frame(x, y), conf.int = conf.int, p.val = p.val)
   class(obj) = "Rttest"
   obj
 }
-
-
