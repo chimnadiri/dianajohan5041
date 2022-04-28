@@ -3,7 +3,6 @@
 #'
 #' @param x Rttest object
 #' @param ... other
-#' @importFrom reshape2 melt
 #' @importFrom ggplot2 ggplot geom_boxplot aes labs
 #' @return boxplot of two samples
 #' @export
@@ -13,14 +12,16 @@
 plot.Rttest <- function(x,...)
 {
 
-  variable = NULL
-  value = NULL
+  L = NULL
+  g = NULL
   data = x[["data"]]
-  df = data.frame(melt(data, id.vars = NULL))
-  ggplot(data = df, aes(x = variable, y = value )) +
+  l = length(data$x)
+  Cat <- rep(c("A", "B"), c(l,l))
+  df = data.frame(L = c(data$x, data$y), g = Cat)
+  ggplot(data = df, aes(x = g, y = L, fill = g )) +
     geom_boxplot() +
     labs(title="Boxplot of two samples",
-         x ="samples", y = "data")
+         x ="samples", y = "data", fill='Sample name')
 
 }
 
